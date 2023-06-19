@@ -45,7 +45,7 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
         )
         
         let cardDetailView = ctx.view(forKey: .from)!
-        
+        screens.cardDetail.view.layer.cornerRadius = self.params.settings.cardCornerRadius
         let animatedContainerView = UIView()
         if params.settings.isEnabledDebugAnimatingViews {
             animatedContainerView.layer.borderColor = UIColor.yellow.cgColor
@@ -119,7 +119,7 @@ final class DismissCardAnimator: NSObject, UIViewControllerAnimatedTransitioning
             ctx.completeTransition(success)
         }
         
-        UIView.animate(withDuration: transitionDuration(using: ctx), delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+        UIView.animate(withDuration: transitionDuration(using: ctx), delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
             animateCardViewBackToPlace()
         }) { (finished) in
             completeEverything()
